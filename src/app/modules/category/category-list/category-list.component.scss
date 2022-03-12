@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+.mat-column-id {
+    width: 10%;
+}
+.mat-column-name {
+    width: 60%;
+}
+.mat-column-created_at {
+    width: 15%;
+}
+.mat-column-updated_at {
+    width: 15%;
+}
+.mat-column-opcion {
+    width: 5%;
+}

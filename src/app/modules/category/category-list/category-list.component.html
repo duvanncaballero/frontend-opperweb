@@ -1,0 +1,47 @@
+<app-loading [show]="loading"></app-loading>
+
+<app-sin-registros *ngIf="loading === false && categories.data.length == 0"
+  [title]="'Ups! Parece que no hay categorías'"
+  [message]="'Puede empezar creando una'"
+  [path]="'new'"
+  [label]="'Crear categoría'"
+></app-sin-registros>
+
+<table mat-table [dataSource]="categories" *ngIf="categories.data.length !=0">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Código </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef> Fecha creación </th>
+      <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updated_at">
+      <th mat-header-cell *matHeaderCellDef> Fecha actualización </th>
+      <td mat-cell *matCellDef="let element"> {{element.updated_at}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="option">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+  
+        <button mat-icon-button [matTooltip]="'Editar'" [routerLink]="[element.id]">
+          <mat-icon class="text-primary">edit</mat-icon>
+        </button>
+  
+        <button mat-icon-button [matTooltip]="'Borrar'" (click)="eliminar(element)">
+          <mat-icon class="text-danger">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

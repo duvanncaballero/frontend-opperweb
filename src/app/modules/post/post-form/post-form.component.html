@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{!id ? 'Crear ' : 'Editar '}} publicación</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="row mt-3">
+                <div class="col-md">
+                    <mat-form-field class="form-field full-width" appearance="outline">
+                        <mat-label>Categoría</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let op of categories.data" [value]="op.id">{{op.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.controls.category.touched && form.controls.category.invalid">
+                        <span *ngIf="form.controls.category.errors.required">Este campo es requerido.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="form-field full-width" appearance="outline">
+                        <mat-label>Título</mat-label>
+                        <input matInput formControlName="title" required>
+                        <mat-error *ngIf="form.controls.title.touched && form.controls.title.invalid">
+                        <span *ngIf="form.controls.title.errors.required">Este campo es requerido.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="form-field full-width" appearance="outline">
+                        <mat-label>Contenido</mat-label>
+                        <textarea matInput formControlName="content" rows="5" cols="40" required></textarea>
+                        <mat-error *ngIf="form.controls.content.touched && form.controls.content.invalid">
+                        <span *ngIf="form.controls.content.errors.required">Este campo es requerido.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                <button mat-raised-button color="success" type="submit" [disabled]="loading">
+                    <mat-icon>add</mat-icon>
+                    Guardar
+                </button>
+        
+                <button [routerLink]="'/post'" mat-raised-button color="cancel" type="button" class="ml">
+                    <mat-icon>close</mat-icon>
+                    Cancelar
+                </button>
+                </div>
+            </div>
+
+            <app-loading [show]="loading"></app-loading>
+        </form>
+      </div>
+    </mat-card-content>
+</mat-card>
+  

@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{!id ? 'Crear ' : 'Editar '}} categoría</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="row mt-3">
+                <div class="col-md">
+                    <mat-form-field class="form-field full-width" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name" required>
+                        <mat-error *ngIf="form.controls.name.touched && form.controls.name.invalid">
+                        <span *ngIf="form.controls.name.errors.required">Este campo es requerido.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                <button mat-raised-button color="success" type="submit" [disabled]="loading">
+                    <mat-icon>add</mat-icon>
+                    Guardar
+                </button>
+        
+                <button [routerLink]="'/category'" mat-raised-button color="cancel" type="button" class="ml">
+                    <mat-icon>close</mat-icon>
+                    Cancelar
+                </button>
+                </div>
+            </div>
+
+            <app-loading [show]="loading"></app-loading>
+        </form>
+      </div>
+    </mat-card-content>
+</mat-card>
+  

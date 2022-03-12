@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.custom-float-button {
+  position: fixed !important;
+  bottom: 150px !important;
+  right: 50px !important;
+  z-index: 999 !important;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.ml {
+  margin-left: 15px !important;
+}
+
+.mat-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.mat-cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.full-width {
+  width: 100%;
+}
